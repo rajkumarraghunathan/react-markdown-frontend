@@ -25,13 +25,13 @@ const Login = () => {
                 Cookies.set('token', token, { secure: true, sameSite: 'strict' }); // Store token in a secure cookie
                 console.log(token);
                 console.log(response.data.message);
-                if (response.data.message == "User signed-in successfully.") {
+                if (response.data.message === "User signed-in successfully.") {
                     navigate(redirectUrl)
                 }
-                else if (response.data.message == "Wrong User") {
+                else if (response.data.message === "Wrong User") {
                     setMessage('Wrong user')
                 }
-                else if (response.data.message == "Wrong Password") {
+                else if (response.data.message === "Wrong Password") {
                     setMessage('Wrong Password')
                 }
             })

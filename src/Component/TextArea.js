@@ -9,26 +9,23 @@ import Header from './Header';
 
 const TextArea = () => {
 
-    const [markdownCodes, setMarkdownCodes] = useState([]);
+    // const [markdownCodes, setMarkdownCodes] = useState([]);
     const [content, setContent] = useState();
     const [message, setMessage] = useState();
     // const navigate = useNavigate();
 
-    useEffect(() => {
-        const fetchMarkdownCodes = async () => {
-            try {
-                await axios.get(`${API_URL}/getContent`).then((response) => {
-                    setContent(response.data.content.content);
-                }).catch(error => {
-                    console.error(error.message);
-                })
-            } catch (error) {
-                console.error('Failed to fetch markdown codes');
-            }
-        };
+    // useEffect(() => {
+    //     const fetchData = async () => {
+    //         try {
+    //             const response = await axios.get(`${API_URL}/getContent`);
+    //             setContent(response.data.content);
+    //         } catch (error) {
+    //             console.error('Failed to fetch content:', error);
+    //         }
+    //     };
 
-        fetchMarkdownCodes();
-    }, [])
+    //     fetchData();
+    // }, []);
 
 
 
@@ -36,12 +33,12 @@ const TextArea = () => {
 
         await axios.post(`${API_URL}/content`, {
             content: content
-        }).then((response) => {
+        }, { withCredentials: true }).then((response) => {
             console.log(response.data.content.content);
-            if (response.data.content.message == "No Content") {
-                setMessage("No Content")
+            if (response.data.content.message === "No Content") {
+                return setMessage("No Content")
             }
-            alert('Content Added Successfully....')
+            setMessage('Content Added Successfully....')
             console.log(content);
         }).catch((error) => {
             console.log(error.message);

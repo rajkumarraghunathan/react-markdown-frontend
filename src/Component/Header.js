@@ -11,12 +11,12 @@ const Header = () => {
 
     const logout = async () => {
         await axios.get(`${API_URL}/logout`).then((response) => {
-            if (response.data.message == 'User signed-out!') {
+            const redirectUrl = response.data.redirectUrl;
+            if (response.data.message === 'User signed-out!') {
                 alert('User logout Successfully..........')
-                navigate('/')
+                navigate(redirectUrl)
             }
-        });
-
+        }).catch(error => console.log(error));
     }
 
     return (
@@ -27,7 +27,7 @@ const Header = () => {
                     <form className="d-flex nav-item dropdown dropstart " role="button">
                         <CgProfile className="nav-link dropdown-toggle pe-auto fs-4" data-bs-toggle="dropdown" aria-expanded="false" />
                         <ul className="dropdown-menu text-center " >
-                            <li><a className="dropdown-item text-primary pe-auto" onClick={logout}>Logout</a></li>
+                            <li><span className="dropdown-item text-primary pe-auto" onClick={logout}>Logout</span></li>
                         </ul>
                     </form>
                 </div>
