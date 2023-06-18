@@ -2,47 +2,45 @@ import axios from 'axios';
 import React, { useState } from 'react'
 import { API_URL } from '../API/api';
 import { Link, useNavigate } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Register = () => {
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [name, setName] = useState('');
-    const [message, setMessage] = useState('');
     const navigate = useNavigate();
 
 
     const handleInput = (event) => {
         event.preventDefault()
-        console.log(name);
-        console.log(email);
-        console.log(password);
+
         axios.post(`${API_URL}/Signup`, {
             name: name,
             email: email,
             password: password
-        }).then((response) => {
-            console.log(response.data)
-            console.log(email);
-            console.log(password);
-            if (response.data.message == 'New user was added Sucessfully................') {
-                navigate('/')
+        }, { withCredentials: true }).then((response) => {
+            if (response.data.message === 'New user was added Sucessfully................') {
+                return navigate('/')
             }
-            else if (response.data.message == 'User Already Exists') {
-                setMessage('User Already Exists')
+            else if (response.data.message === "User Already Exists") {
+                return toast('User Already Exists')
             }
             else {
-                setMessage('Error While Added a User')
+                return toast('Error While Added a User')
             }
+        }).catch(err => {
+            console.error(err)
+            return toast(err.response.data.message)
         })
-            .catch(err => console.log(err))
     }
 
     return (
         <div className='container'>
-            <div className='d-flex justify-content-center align-items-center pt-5'>
-                <div className="card dropdown-menu shadow-lg" style={{ width: "18rem" }}>
-                    <div className="card-body">
+            <div className='d-flex justify-content-center align-items-center pt-5 design' >
+                <div className="card dropdown-menu shadow-lg " style={{ width: "18rem" }}>
+                    <div className="card-body " >
                         <h1 className="pb-3" style={{ textAlign: "center", color: 'blue' }}>Register</h1>
                         <div className="dropdown-divider"></div>
                         <form onSubmit={handleInput}>
@@ -68,6 +66,7 @@ const Register = () => {
                                 <button type="submit" className="btn btn-primary">Submit</button>
                             </div>
                         </form>
+                        <ToastContainer />
                     </div>
                 </div>
             </div>

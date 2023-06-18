@@ -7,8 +7,8 @@ import Cookies from 'js-cookie';
 
 const Login = () => {
 
-    const [email, setEmail] = useState();
-    const [password, setPassword] = useState();
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
     const [message, setMessage] = useState('');
     const navigate = useNavigate();
 
@@ -22,9 +22,7 @@ const Login = () => {
             }).then((response) => {
                 const token = response.data.token;
                 const redirectUrl = response.data.redirectUrl;
-                Cookies.set('token', token, { secure: true, sameSite: 'strict' }); // Store token in a secure cookie
-                console.log(token);
-                console.log(response.data.message);
+                Cookies.set('accessToken', token, { secure: true, sameSite: 'strict' }); // Store token in a secure cookie
                 if (response.data.message === "User signed-in successfully.") {
                     navigate(redirectUrl)
                 }
@@ -36,7 +34,6 @@ const Login = () => {
                 }
             })
                 .catch((error) => {
-                    console.log(error);
                     setMessage('error')
                 });
         } catch (error) {
@@ -47,9 +44,9 @@ const Login = () => {
     }
 
     return (
-        <div className='container'>
-            <div className='d-flex justify-content-center align-items-center pt-5'>
-                <div className="card dropdown-menu shadow-lg" style={{ width: "18rem" }}>
+        <div className='container-fluid'>
+            <div className='d-flex justify-content-center align-items-center pt-5 '>
+                <div className="card dropdown-menu shadow-lg loginPage" style={{ width: "18rem" }}>
                     <div className="card-body">
                         <h1 className="pb-3" style={{ textAlign: "center", color: 'blue' }}>Login</h1>
                         <div className="dropdown-divider"></div>

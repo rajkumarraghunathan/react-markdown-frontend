@@ -2,15 +2,15 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { API_URL } from '../API/api';
 import { useParams } from 'react-router-dom';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
-const ResetPasswordForm = ({ }) => {
+const ResetPasswordForm = () => {
     const [newPassword, setNewPassword] = useState('');
     const [message, setMessage] = useState('');
     const navigate = useNavigate();
 
     const params = useParams()
-    // console.log(params);
+
 
 
     const handleResetPassword = async (e) => {
@@ -19,8 +19,7 @@ const ResetPasswordForm = ({ }) => {
             await axios.post(`${API_URL}/Reset-password/${params.resetToken}`, {
                 newPassword
             }).then((response) => {
-                if (response.data.message == 'Password reset successful') {
-                    console.log(newPassword);
+                if (response.data.message === 'Password reset successful') {
                     setMessage('Password reset successfully......');
                     navigate('/textArea')
                 }

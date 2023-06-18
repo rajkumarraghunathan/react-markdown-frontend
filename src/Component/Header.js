@@ -4,16 +4,23 @@ import { CgProfile } from 'react-icons/cg';
 import axios from 'axios';
 import { API_URL } from '../API/api';
 import { useNavigate } from 'react-router-dom'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import Cookies from 'js-cookie';
+
+
+
 
 const Header = () => {
 
     const navigate = useNavigate();
 
     const logout = async () => {
-        await axios.get(`${API_URL}/logout`).then((response) => {
+        await axios.get(`${API_URL}/logout`, { withCredentials: true }).then((response) => {
             const redirectUrl = response.data.redirectUrl;
             if (response.data.message === 'User signed-out!') {
-                alert('User logout Successfully..........')
+                toast('User logout Successfully..........')
+                Cookies.remove('accessToken');
                 navigate(redirectUrl)
             }
         }).catch(error => console.log(error));
@@ -29,6 +36,7 @@ const Header = () => {
                         <ul className="dropdown-menu text-center " >
                             <li><span className="dropdown-item text-primary pe-auto" onClick={logout}>Logout</span></li>
                         </ul>
+                        <ToastContainer />
                     </form>
                 </div>
             </nav>

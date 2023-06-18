@@ -4,28 +4,37 @@ import { API_URL } from '../API/api';
 import ReactMarkdown from 'react-markdown'
 import gfm from 'remark-gfm'
 import Header from './Header';
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 const TextArea = () => {
 
-    // const [markdownCodes, setMarkdownCodes] = useState([]);
+
     const [content, setContent] = useState();
-    const [message, setMessage] = useState();
-    // const navigate = useNavigate();
 
-    // useEffect(() => {
-    //     const fetchData = async () => {
-    //         try {
-    //             const response = await axios.get(`${API_URL}/getContent`);
-    //             setContent(response.data.content);
-    //         } catch (error) {
-    //             console.error('Failed to fetch content:', error);
-    //         }
-    //     };
 
-    //     fetchData();
-    // }, []);
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                await axios.get(`${API_URL}/getContent`, { withCredentials: true }).then((response) => {
+                    const data = response.data.content;
+                    const value = data.map((data) => {
+                        return data.content
+                    })
+                    const contentString = value.join('')
+                    const modifiedString = contentString.replace(/\/n/g, "")
+
+                    setContent(modifiedString)
+                })
+            } catch (error) {
+                console.error('Failed to fetch content:', error);
+            }
+        };
+
+        fetchData();
+    }, []);
 
 
 
@@ -34,12 +43,10 @@ const TextArea = () => {
         await axios.post(`${API_URL}/content`, {
             content: content
         }, { withCredentials: true }).then((response) => {
-            console.log(response.data.content.content);
             if (response.data.content.message === "No Content") {
-                return setMessage("No Content")
+                return toast("No Content");
             }
-            setMessage('Content Added Successfully....')
-            console.log(content);
+            toast('Content Added Successfully....')
         }).catch((error) => {
             console.log(error.message);
         });
@@ -53,7 +60,7 @@ const TextArea = () => {
                 <button type='button' className='btn btn-outline-success' onClick={handleInput}>Save</button>
             </div>
             <div className='py-3'>
-                {message}
+                <ToastContainer />
             </div>
             <div className='row'>
                 <div className="col">
