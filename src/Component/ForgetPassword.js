@@ -14,7 +14,6 @@ const ForgotPassword = () => {
 
         try {
             await axios.post(`${API_URL}/forgot-password`, { email: email });
-            // console.log(email);
             setMessage('Password reset link sent to your email');
         } catch (error) {
             setMessage('User not found');
@@ -23,34 +22,49 @@ const ForgotPassword = () => {
     };
 
     return (
-        <div className='container'>
-            <form className=' p-5 ' onSubmit={handleForgotPassword}>
-                <div className="card text-center">
-                    <div className="card-header">
-                        <h2>Forgot Password</h2>
-                    </div>
-                    <div className="card-body">
-                        <div className="form-group row">
-                            <label htmlFor="exampleInputEmail1" className="col-sm-2 col-form-label">Email address</label>
-                            <div className="col-sm-10">
-                                <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value={email}
-                                    onChange={(e) => setEmail(e.target.value)} required />
+        <div className='container-fluid'>
+            <div className=' d-flex justify-content-center align-items-center bg-fg'>
+                <div className="card dropdown-menu card-design-fg " >
+                    <div className="card-body " >
+
+                        {/* ---------------------------------------------------------------------------------------------------------------------------------*/}
+
+                        <h4 className="pb-3" style={{ textAlign: "center", color: 'blue' }}>Forgot Password</h4>
+
+                        {/* ---------------------------------------------------------------------------------------------------------------------------------*/}
+                        <form onSubmit={handleForgotPassword}>
+
+                            {/* ---------------------------------------------------------------------------------------------------------------------------------*/}
+
+                            <div className="form-group row">
+                                <div className="mb-3 pt-3">
+                                    <label htmlFor="exampleInputEmail1" className="form-label text-light">Email address</label>
+                                    <input type="email" className="form-control color" id="exampleInputEmail1" aria-describedby="emailHelp" value={email}
+                                        onChange={(e) => setEmail(e.target.value)} required />
+                                </div>
                             </div>
-                        </div>
+
+                            {/* ---------------------------------------------------------------------------------------------------------------------------------*/}
+
+                            <div className="mb-3">
+                                <p style={{ textAlign: "center", color: 'blue' }}><Link to='/'>Login</Link></p>
+                            </div>
+
+                            {/* ---------------------------------------------------------------------------------------------------------------------------------*/}
+
+                            <div className='d-grid'>
+                                <button type="submit" className="btn submit-button" >Submit</button>
+                            </div>
+
+                            {/* ---------------------------------------------------------------------------------------------------------------------------------*/}
+                        </form>
+
+
+                        <p className='text-center text-success'>{message}</p>
 
                     </div>
-                    <div className="card-footer text-muted">
-                        <div className="mb-3">
-                            <p style={{ textAlign: "center", color: 'blue' }}><Link to='/'>Login</Link></p>
-                        </div>
-                        <div className=''>
-                            <button type="submit" className="btn btn-primary" >Submit</button>
-                        </div>
-                    </div>
                 </div>
-                <div className="dropdown-divider"></div>
-                <p className='text-center text-success'>{message}</p>
-            </form>
+            </div>
         </div>
     );
 };

@@ -30,7 +30,7 @@ const Header = () => {
         <>
             <nav className="navbar navbar-dark bg-primary text-white px-2">
                 <div className="container-fluid">
-                    <Link to='/' className="navbar-brand" >Markdown</Link>
+                    <Link className="navbar-brand" >Markdown</Link>
                     <form className="d-flex nav-item dropdown dropstart " role="button">
                         <CgProfile className="nav-link dropdown-toggle pe-auto fs-4" data-bs-toggle="dropdown" aria-expanded="false" />
                         <ul className="dropdown-menu text-center " >

@@ -4,6 +4,7 @@ import { API_URL } from '../API/api';
 import { Link, useNavigate } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { GiClick } from 'react-icons/gi';
 
 const Register = () => {
 
@@ -31,40 +32,66 @@ const Register = () => {
                 return toast('Error While Added a User')
             }
         }).catch(err => {
-            console.error(err)
             return toast(err.response.data.message)
         })
     }
 
     return (
-        <div className='container'>
-            <div className='d-flex justify-content-center align-items-center pt-5 design' >
-                <div className="card dropdown-menu shadow-lg " style={{ width: "18rem" }}>
+        <div className='container-fluid'>
+            <div className='d-flex justify-content-center align-items-center design re-bg' >
+                <div className="card dropdown-menu card-design-re " >
                     <div className="card-body " >
-                        <h1 className="pb-3" style={{ textAlign: "center", color: 'blue' }}>Register</h1>
-                        <div className="dropdown-divider"></div>
+
+                        {/* ---------------------------------------------------------------------------------------------------------------------------------------------------- */}
+
+                        <h1 className="pb-3" style={{ textAlign: "center", color: 'blue' }}>REGISTER</h1>
+
+                        {/* ---------------------------------------------------------------------------------------------------------------------------------------------------- */}
+
+
+
+                        {/* ---------------------------------------------------------------------------------------------------------------------------------------------------- */}
+
                         <form onSubmit={handleInput}>
                             <div className="mb-3 pt-3">
                                 <label htmlFor="exampleInputEmail1" className="form-label">Name</label>
-                                <input type="text" className="form-control" value={name} onChange={e => setName(e.target.value)} />
+                                <input type="text" className="form-control color" value={name} onChange={e => setName(e.target.value)} />
 
                             </div>
+
+                            {/* ---------------------------------------------------------------------------------------------------------------------------------------------------- */}
+
                             <div className="mb-3 pt-3">
                                 <label htmlFor="exampleInputEmail1" className="form-label">Email address</label>
-                                <input type="email" className="form-control" aria-describedby="emailHelp" value={email} onChange={e => setEmail(e.target.value)} />
+                                <input type="email" className="form-control color" aria-describedby="emailHelp" value={email} onChange={e => setEmail(e.target.value)} />
 
                             </div>
+
+                            {/* ---------------------------------------------------------------------------------------------------------------------------------------------------- */}
+
                             <div className="mb-3 pt-3">
                                 <label htmlFor="exampleInputPassword1" className="form-label">Password</label>
-                                <input type="password" className="form-control" value={password} onChange={e => setPassword(e.target.value)} />
+                                <input type="password" className="form-control color" value={password} onChange={e => setPassword(e.target.value)} />
                             </div>
+
+                            {/* ---------------------------------------------------------------------------------------------------------------------------------------------------- */}
+
                             <div className="mb-3">
-                                <p style={{ textAlign: "center", color: 'blue' }}><Link to='/'>Login</Link></p>
+                                <p className='d-flex justify-content-center '><Link className='text-light' to='/'>Login<GiClick /></Link></p>
                             </div>
-                            <div className="dropdown-divider"></div>
+
+                            {/* ---------------------------------------------------------------------------------------------------------------------------------------------------- */}
+
+
+
+                            {/* ---------------------------------------------------------------------------------------------------------------------------------------------------- */}
+
                             <div className='d-grid'>
-                                <button type="submit" className="btn btn-primary">Submit</button>
+                                <button type="submit" className="btn submit-button">Submit</button>
                             </div>
+
+                            {/* ---------------------------------------------------------------------------------------------------------------------------------------------------- */}
+
                         </form>
                         <ToastContainer />
                     </div>

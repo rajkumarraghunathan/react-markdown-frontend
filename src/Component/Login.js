@@ -3,6 +3,8 @@ import axios from 'axios';
 import { API_URL } from '../API/api';
 import { Link, useNavigate } from 'react-router-dom';
 import Cookies from 'js-cookie';
+import { GiClick } from 'react-icons/gi';
+import { TbHandClick } from 'react-icons/tb';
 
 
 const Login = () => {
@@ -44,33 +46,66 @@ const Login = () => {
     }
 
     return (
-        <div className='container-fluid'>
-            <div className='d-flex justify-content-center align-items-center pt-5 '>
-                <div className="card dropdown-menu shadow-lg loginPage" style={{ width: "18rem" }}>
+        <div className='container-fluid ' >
+            <div className='d-flex justify-content-center align-items-center bg'>
+                <div className="card dropdown-menu  card-design" >
                     <div className="card-body">
-                        <h1 className="pb-3" style={{ textAlign: "center", color: 'blue' }}>Login</h1>
-                        <div className="dropdown-divider"></div>
+
+                        {/* ---------------------------------------------------------------------------------------------------------------------------------------------------- */}
+
+                        <h1 className="pb-3" style={{ textAlign: "center", }}>LOGIN</h1>
+
+
+                        {/* ---------------------------------------------------------------------------------------------------------------------------------------------------- */}
+
+
                         <form onSubmit={handleSubmit}>
+
+                            {/* ---------------------------------------------------------------------------------------------------------------------------------------------------- */}
+
                             <div className="mb-3 pt-3">
                                 <label htmlFor="exampleInputEmail1" className="form-label">Email address</label>
-                                <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value={email} onChange={e => setEmail(e.target.value)} required />
+                                <input type="email" className="form-control  color" id="exampleInputEmail1" aria-describedby="emailHelp" value={email} onChange={e => setEmail(e.target.value)} required />
                             </div>
-                            <div className="mb-3 pt-3">
+
+                            {/* ---------------------------------------------------------------------------------------------------------------------------------------------------- */}
+
+                            <div className="mb-4 pt-3">
                                 <label htmlFor="exampleInputPassword1" className="form-label">Password</label>
-                                <input type="password" className="form-control" id="exampleInputPassword1" value={password} onChange={e => setPassword(e.target.value)} required />
+                                <input type="password" className="form-control color" id="exampleInputPassword1" value={password} onChange={e => setPassword(e.target.value)} required />
                             </div>
-                            <div className="dropdown-divider"></div>
-                            <div className="mb-3">
-                                If you have No Account<Link to='/Signup'>Click here</Link>
+
+                            {/* ---------------------------------------------------------------------------------------------------------------------------------------------------- */}
+
+
+
+                            {/* ---------------------------------------------------------------------------------------------------------------------------------------------------- */}
+
+                            <div className="mb-4 ">
+                                If you have No Account?<Link to='/Signup' className='link-color ms-2'>Click<GiClick /></Link>
                             </div>
-                            <div className="mb-3">
-                                Forget Password<Link to='/Forget-password'>Click here</Link>
+
+                            {/* ---------------------------------------------------------------------------------------------------------------------------------------------------- */}
+
+                            <div className="mb-4">
+                                Forget Password<Link to='/Forget-password' className='link-color ms-2'>Click<GiClick /></Link>
                             </div>
-                            <div className='d-grid'>
-                                <button type="submit" className="btn btn-primary" >Submit</button>
+
+                            {/* ---------------------------------------------------------------------------------------------------------------------------------------------------- */}
+
+                            <div className='d-grid mb-3'>
+                                <button type="submit" className="btn  submit-button" >Submit<TbHandClick /></button>
                             </div>
-                            <div className="dropdown-divider"></div>
+
+                            {/* ---------------------------------------------------------------------------------------------------------------------------------------------------- */}
+
+
+
+                            {/* ---------------------------------------------------------------------------------------------------------------------------------------------------- */}
+
                             <p className='text-center text-danger'>{message}</p>
+
+                            {/* ---------------------------------------------------------------------------------------------------------------------------------------------------- */}
                         </form>
                     </div>
                 </div>

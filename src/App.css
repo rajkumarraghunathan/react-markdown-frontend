@@ -1,11 +1,128 @@
 .App {
   text-align: center;
-  }
+}
+
 .Appdark {
   text-align: center;
-  color:white;
+  color: white;
   background-color: black;
 }
-.loginPage{
-  background: rgba(255, 255, 255, 0.15) !important;
+
+.submit-button {
+  background-color: rgb(91, 183, 5);
+  color: rgb(241, 238, 238);
+  padding: 10px 20px;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  box-shadow: 5px 5px 10px rgba(60, 58, 58, 0.5);
+
+}
+
+.submit-button:hover {
+  animation: none;
+  background-color: #1414c1;
+  color: whitesmoke;
+}
+
+.color {
+  border: 1px solid black;
+  border-radius: 20px;
+}
+
+.re-bg {
+  height: 100vh;
+  background-image: url('../image/pexels-dominika-roseclay-1036808.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  border: none;
+}
+
+.bg {
+  height: 100vh;
+  background-image: url('../image/d-illustration-background-wallpaper-graphic-artwork-blue-neon-wireframe-science-fiction-tunnel-corridor-passageway-hangar-176274663.webp');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  border: none;
+}
+
+.bg-fg {
+  height: 100vh;
+  background-image: url('../image/pexels-tirachard-kumtanom-733854.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  border: none;
+}
+
+.card-design {
+  width: 18rem;
+  border-radius: 20px;
+  background: linear-gradient(to top, rgb(12, 104, 174), white);
+  box-shadow: 50px 30px 30px rgba(7, 7, 7, 0.5);
+  border: none;
+
+}
+
+.card-design-re {
+  width: 18rem;
+  border-radius: 20px;
+  background: linear-gradient(to top, rgb(15, 15, 15), white);
+  box-shadow: 50px 30px 30px rgba(7, 7, 7, 0.5);
+  border: none;
+}
+
+.card-design-fg {
+  width: 18rem;
+  border-radius: 20px;
+  background: linear-gradient(to top, rgb(15, 12, 12), rgb(194, 145, 97));
+  box-shadow: 50px 30px 30px rgba(7, 7, 7, 0.5);
+  border: none;
+}
+
+.dropdown-divider {
+  background: black;
+}
+
+.link-color {
+  color: whitesmoke;
+}
+
+.scroll-container {
+  height: 100vh;
+  overflow: auto;
+  border: 0.5px solid rgb(97, 96, 96);
+  border-radius: 5px;
+}
+
+
+
+.save-button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.save-button:hover {
+  background-color: #45a049;
+}
+
+.save-button:active {
+  transform: translateY(2px);
+}
+
+.darkMode {
+  background-color: black;
+  color: whitesmoke;
+}
+
+.lightMode {
+  background-color: whitesmoke;
+  color: black;
 }
