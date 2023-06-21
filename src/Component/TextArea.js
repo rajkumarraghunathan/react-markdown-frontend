@@ -31,6 +31,7 @@ const TextArea = () => {
             try {
                 await axios.get(`${API_URL}/getContent`, { withCredentials: true }).then((response) => {
                     const data = response.data.content;
+                    console.log(data);
                     const value = data.map((data) => {
                         return data.content
                     })
