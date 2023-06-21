@@ -29,7 +29,11 @@ const TextArea = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                await axios.get(`${API_URL}/getContent`, { withCredentials: true }).then((response) => {
+                await axios.get(`${API_URL}/getContent`, {
+                    headers: {
+                        Authorization: `Bearer ${API_URL}`,
+                    },
+                }).then((response) => {
                     const data = response.data.content;
                     console.log(data);
                     const value = data.map((data) => {
