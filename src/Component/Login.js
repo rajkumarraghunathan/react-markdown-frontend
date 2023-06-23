@@ -24,7 +24,7 @@ const Login = () => {
             }).then((response) => {
                 const token = response.data.token;
                 const redirectUrl = response.data.redirectUrl;
-                Cookies.set('accessToken', token, { secure: true, sameSite: 'strict' }); // Store token in a secure cookie
+                Cookies.set('accessToken', token); // Store token in a secure cookie//{ secure: true,sameSite: 'strict' }
                 if (response.data.message === "User signed-in successfully.") {
                     navigate(redirectUrl)
                 }
