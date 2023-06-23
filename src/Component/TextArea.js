@@ -31,7 +31,7 @@ const TextArea = () => {
             try {
                 await axios.get(`${API_URL}/getContent`, {
                     headers: { 'Content-Type': 'application/json' },
-                    withCredentials: true
+                    withCredentials: true,
                     // credentials: "include"
                 }).then((response) => {
                     const data = response.data.content;
