@@ -9,6 +9,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { MdDarkMode } from 'react-icons/md';
 import { BsSun } from 'react-icons/bs';
 import DemoNote from './DemoNote';
+import Cookies from 'js-cookie';
 
 const TextArea = () => {
 
@@ -28,14 +29,15 @@ const TextArea = () => {
 
     useEffect(() => {
         const fetchData = async () => {
+            const accessToken = Cookies.get('accessToken');
             try {
                 await axios.get(`${API_URL}/getContent`, {
-                    headers: { 'Content-Type': 'application/json' },
+                    headers: {
+                        Authorization: `Bearer ${accessToken}`,
+                    },
                     withCredentials: true,
-                    // credentials: "include"
                 }).then((response) => {
                     const data = response.data.content;
-                    console.log(data);
                     const value = data.map((data) => {
                         return data.content
                     })
