@@ -33,7 +33,7 @@ const TextArea = () => {
             try {
                 await axios.get(`${API_URL}/getContent`, {
                     headers: {
-                        Authorization: `Bearer ${accessToken}`,
+                        Cookies: `accessToken ${accessToken}`,
                     },
                     withCredentials: true,
                 }).then((response) => {
