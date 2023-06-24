@@ -33,7 +33,7 @@ const TextArea = () => {
             try {
                 await axios.get(`${API_URL}/getContent`, {
                     headers: {
-                        Cookies: `accessToken ${accessToken}`,
+                        cookies: accessToken,
                     },
                     withCredentials: true,
                 }).then((response) => {
@@ -57,10 +57,14 @@ const TextArea = () => {
 
 
     const handleInput = async () => {
-
+        const accessToken = Cookies.get('accessToken');
         await axios.post(`${API_URL}/content`, {
             content: content
-        }, { withCredentials: true }).then((response) => {
+        }, {
+            headers: {
+                cookies: accessToken,
+            }, withCredentials: true
+        }).then((response) => {
             if (response.data.content.message === "No Content") {
                 return toast("No Content");
             }

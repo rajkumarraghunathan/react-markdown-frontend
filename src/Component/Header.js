@@ -16,14 +16,20 @@ const Header = () => {
     const navigate = useNavigate();
 
     const logout = async () => {
-        await axios.get(`${API_URL}/logout`, { withCredentials: true }).then((response) => {
-            const redirectUrl = response.data.redirectUrl;
-            if (response.data.message === 'User signed-out!') {
-                toast('User logout Successfully..........')
-                Cookies.remove('accessToken');
-                navigate(redirectUrl)
-            }
-        }).catch(error => console.log(error));
+        const accessToken = Cookies.get('accessToken');
+        await axios.get(`${API_URL}/logout`,
+            {
+                headers: {
+                    cookies: accessToken,
+                }, withCredentials: true
+            }).then((response) => {
+                const redirectUrl = response.data.redirectUrl;
+                if (response.data.message === 'User signed-out!') {
+                    toast('User logout Successfully..........')
+                    Cookies.remove('accessToken');
+                    navigate(redirectUrl)
+                }
+            }).catch(error => console.log(error));
     }
 
     return (
