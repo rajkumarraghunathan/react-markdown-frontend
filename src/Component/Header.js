@@ -25,8 +25,8 @@ const Header = () => {
             }).then((response) => {
                 const redirectUrl = response.data.redirectUrl;
                 if (response.data.message === 'User signed-out!') {
-                    toast('User logout Successfully..........')
                     Cookies.remove('accessToken');
+                    toast('User logout Successfully..........')
                     navigate(redirectUrl)
                 }
             }).catch(error => console.log(error));
