@@ -1,6 +1,6 @@
 import './App.css';
 import TextArea from './Component/TextArea';
-import { Routes, Route, useParams } from 'react-router-dom'
+import { Routes, Route } from 'react-router-dom'
 import Login from './Component/Login';
 import Register from './Component/Register';
 import ForgetPassword from './Component/ForgetPassword'
@@ -10,7 +10,6 @@ import ResetPasswordForm from './Component/ResetPassword';
 function App() {
 
 
-  const params = useParams()
 
 
 
