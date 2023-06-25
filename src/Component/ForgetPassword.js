@@ -25,6 +25,7 @@ const ForgotPassword = () => {
     return (
         <div className='container-fluid'>
             <div className=' d-flex justify-content-center align-items-center bg-fg'>
+                <ToastContainer />
                 <div className="card dropdown-menu card-design-fg " >
                     <div className="card-body " >
 
@@ -61,7 +62,7 @@ const ForgotPassword = () => {
                         </form>
 
 
-                        <ToastContainer />
+
 
                         <p className='text-center text-success'>{message}</p>
 
