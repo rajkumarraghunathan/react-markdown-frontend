@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { API_URL } from '../API/api';
 import { Link } from 'react-router-dom';
-
+import { ToastContainer, toast } from 'react-toastify';
 
 const ForgotPassword = () => {
     const [email, setEmail] = useState('');
@@ -15,6 +15,7 @@ const ForgotPassword = () => {
         try {
             await axios.post(`${API_URL}/forgot-password`, { email: email });
             setMessage('Password reset link sent to your email');
+            toast('Password reset link sent to your email')
         } catch (error) {
             setMessage('User not found');
         }
@@ -59,6 +60,8 @@ const ForgotPassword = () => {
                             {/* ---------------------------------------------------------------------------------------------------------------------------------*/}
                         </form>
 
+
+                        <ToastContainer />
 
                         <p className='text-center text-success'>{message}</p>
 
