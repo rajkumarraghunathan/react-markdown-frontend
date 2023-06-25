@@ -16,6 +16,7 @@ const ResetPasswordForm = () => {
     const handleResetPassword = async (e) => {
         e.preventDefault();
         try {
+            console.log(API_URL);
             await axios.post(`${API_URL}/Reset-password/${params.resetToken}`, {
                 newPassword
             }).then((response) => {

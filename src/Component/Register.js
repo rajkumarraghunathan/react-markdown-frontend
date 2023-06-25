@@ -5,6 +5,8 @@ import { Link, useNavigate } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { GiClick } from 'react-icons/gi';
+import Cookies from 'js-cookie';
+
 
 const Register = () => {
 
@@ -16,12 +18,17 @@ const Register = () => {
 
     const handleInput = (event) => {
         event.preventDefault()
-
+        const accessToken = Cookies.get('accessToken');
         axios.post(`${API_URL}/Signup`, {
             name: name,
             email: email,
             password: password
-        }, { withCredentials: true }).then((response) => {
+        }, {
+            headers: {
+                cookies: accessToken,
+            },
+            withCredentials: true
+        }).then((response) => {
             if (response.data.message === 'New user was added Sucessfully................') {
                 return navigate('/')
             }
