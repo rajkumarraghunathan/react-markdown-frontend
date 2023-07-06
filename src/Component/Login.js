@@ -12,6 +12,7 @@ const Login = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [message, setMessage] = useState('');
+    const [isLoading, setIsLoading] = useState(false);
     const navigate = useNavigate();
 
 
@@ -95,10 +96,12 @@ const Login = () => {
 
                             {/* ---------------------------------------------------------------------------------------------------------------------------------------------------- */}
 
-                            <div className='d-grid mb-3'>
+                            {isLoading ? (<div className='d-grid mb-3'>
                                 <button type="submit" className="btn  submit-button" >Submit<TbHandClick /></button>
                             </div>
-
+                            ) : (<div className="spinner-border" role="status">
+                                <span className="visually-hidden">Loading...</span>
+                            </div>)}
                             {/* ---------------------------------------------------------------------------------------------------------------------------------------------------- */}
 
 
