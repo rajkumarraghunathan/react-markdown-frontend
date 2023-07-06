@@ -28,7 +28,7 @@ const Login = () => {
                 Cookies.set('accessToken', token, { secure: true, sameSite: 'strict' }); // Store token in a secure cookie//
                 if (response.data.message === "User signed-in successfully.") {
                     navigate(redirectUrl)
-                    toast('Wait Loading')
+                    setIsLoading(true)
                 }
                 else if (response.data.message === "Wrong User") {
                     setMessage('Wrong user')
@@ -50,7 +50,7 @@ const Login = () => {
     return (
         <div className='container-fluid ' >
             <div className='d-flex justify-content-center align-items-center bg'>
-                <ToastContainer />
+
                 <div className="card dropdown-menu  card-design" >
                     <div className="card-body">
 
