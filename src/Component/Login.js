@@ -12,11 +12,12 @@ const Login = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [message, setMessage] = useState('');
-    const [isLoading, setIsLoading] = useState(false);
+    const [isLoading, setIsLoading] = useState(true);
     const navigate = useNavigate();
 
 
     const handleSubmit = (event) => {
+        setIsLoading(false)
         event.preventDefault();
         try {
             axios.post(`${API_URL}/login`, {
@@ -28,7 +29,7 @@ const Login = () => {
                 Cookies.set('accessToken', token, { secure: true, sameSite: 'strict' }); // Store token in a secure cookie//
                 if (response.data.message === "User signed-in successfully.") {
                     navigate(redirectUrl)
-                    setIsLoading(true)
+
                 }
                 else if (response.data.message === "Wrong User") {
                     setMessage('Wrong user')
@@ -43,7 +44,9 @@ const Login = () => {
         } catch (error) {
             console.log(error);
         }
-
+        finally {
+            setIsLoading(true);
+        }
 
     }
 
